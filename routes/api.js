@@ -1,35 +1,25 @@
 const express = require('express');
+const path = require('path');
 const router = express.Router();
 
 const User = require('../models/User.js');
 
+// API routes
 
+// Homepage
 router.get('/', (req, res) => {
-  res.send(`
-    <h1>Home</h1>
-    <p><a href="/user/register">Register as a new user</p>
-    <p><a href="/users">See all users</a></p>
-    `);
-  });
-
-router.get('/user/register', (req, res) => {
-  res.send(`
-    <h1>Register new user</h1>
-    <form method="post" action="/user/save">
-      <p><input type="text" name="username" placeholder="Enter your username" required /></p>
-      <p><input type="email" name="email" placeholder="Enter your email" required /></p>
-      <p><input type="text" name="password" placeholder="Enter your password" required /></p>
-      <p><input type="password" name="confirmedpassword" placeholder="Confirm your password" required /></p>
-      <p><button type="submit">Save data</button></p>
-    </form>
-    <p><a href="/">Home</a></p>
-  `);
+  res.sendFile('./index.html', { root : __dirname});
 });
 
-router.post('/user/save', (req, res) => {
+// Registration
+router.get('/user/register', (req, res) => {
+  res.sendFile('./register.html', { root: './public/' });
+});
+
+// Registration result
+router.post('/user/register-result', (req, res) => {
   // get posted data from form
   const { username, email, password, confirmedpassword } = req.body;
-  console.log({ username, email, password, confirmedpassword })
   // instance of model
   const newUser = new User({ username, email, password, confirmedpassword });
   // saving data into db
@@ -46,13 +36,16 @@ router.post('/user/save', (req, res) => {
     });
 });
 
+// Login page
 router.post('/user/login', (req, res) => {
+  res.sendFile('./login.html', { root: './public/' });
 });
 
+// View all users
 router.get('/users', (req, res) => {
     User.find({  })
     .then(data => {
-      let str = '<h1>All users</h1>';
+      let str = '<h1>View all users</h1>';
       data.forEach(user => {
         str += `
         <ul>
@@ -68,5 +61,15 @@ router.get('/users', (req, res) => {
       console.log('error: ', error);
     });
 });
+
+// Page not found
+router.get('*', (req, res) => {
+  res.status(404).send(`
+    <h1>Error 404!</h1>
+    <p>Page not found</p>
+    <p><a href="/">Home</a></p>
+  `);
+});
+
 
 module.exports = router;
