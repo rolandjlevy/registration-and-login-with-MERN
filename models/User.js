@@ -2,8 +2,10 @@ const mongoose = require('mongoose');
 
 // Schema
 const UserSchema = new mongoose.Schema({
-  title: String,
-  body: String,
+  username: String,
+  email: String,
+  password: String,
+  confirmedpassword: String,
   date: {
       type: String,
       default: Date.now()
