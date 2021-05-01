@@ -1,3 +1,3 @@
-## MERN registration / login site
+## Registration & login with MERN stack
 
-- Storing data with [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) cloud database
+The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details
