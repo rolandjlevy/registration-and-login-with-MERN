@@ -1,36 +1,10 @@
 const express = require('express');
-const mongoose = require('mongoose');
-require('dotenv').config();
-
 const app = express();
-const PORT = process.env.PORT || 8080;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('client/build'));
-}
-
-mongoose.connect(process.env.MONGODB_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-});
-
-mongoose.connection.on('connected', () => {
-    console.log('Mongoose is connected...');
-});
-
-// Schema
-const UserSchema = new mongoose.Schema({
-    title: String,
-    body: String,
-    date: {
-        type: String,
-        default: Date.now()
-    }
-});
-const User = mongoose.model('User', UserSchema);
+const User = require('./models/User.js');
 
 // Routes
 
@@ -86,6 +60,4 @@ app.post('/api/save', (req, res) => {
     });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server started at port ${PORT}`);
-});
+module.exports = app;
