@@ -22,7 +22,7 @@ mongoose.connection.on('connected', () => {
 });
 
 // Schema
-const BlogPostSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     title: String,
     body: String,
     date: {
@@ -30,7 +30,7 @@ const BlogPostSchema = new mongoose.Schema({
         default: Date.now()
     }
 });
-const BlogPost = mongoose.model('BlogPost', BlogPostSchema);
+const User = mongoose.model('User', UserSchema);
 
 // saving data into db
 const data = {
@@ -39,9 +39,9 @@ const data = {
 };
 
 // instance of model
-const newBlogPost = new BlogPost(data);
+const newUser = new User(data);
 
-newBlogPost.save((error) => {
+newUser.save((error) => {
     if (error) {
         console.log({error});
     } else {    
@@ -51,12 +51,12 @@ newBlogPost.save((error) => {
 
 // Routes
 app.get('/', (req, res) => {
-    BlogPost.find({  })
+    User.find({  })
     .then(data => {
         // console.log('Data: ', data);
         res.json(data);
     })
-    .catch((error) => {
+    .catch(error => {
         console.log('error: ', error);
     });
 });
