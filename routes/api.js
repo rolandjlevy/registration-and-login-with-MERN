@@ -2,9 +2,6 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
-const bcrypt = require('bcrypt');
-const rounds = 10;
-
 const User = require('../models/User.js');
 
 // API routes
@@ -23,26 +20,18 @@ router.get('/user/register', (req, res) => {
 router.post('/user/register-result', (req, res) => {
   // get posted data from form
   const { username, email, password, confirmedpassword } = req.body;
-  // instance of model
-  bcrypt.hash(password, rounds, async (err, hash) => {
-    if (err) {
-      console.log({error});
-      res.sendFile('./error.html', { root: './public/' });
-      return;
+  const newUser = new User({ username, email, password });
+  // saving data into db
+  newUser.save((error, document) => {
+    if (error) {
+      console.log({error, document});
+    } else {
+      res.send(`
+        <h1>Success!</h1>
+        <p>You have now registered as a new user</p>
+        <p><a href="/">Home</a></p>
+      `);
     }
-    const newUser = await new User({ username, email, password:hash });
-    // saving data into db
-    newUser.save(error => {
-      if (error) {
-        console.log({error});
-      } else {
-        res.send(`
-          <h1>Success!</h1>
-          <p>You have now registered as a new user</p>
-          <p><a href="/">Home</a></p>
-        `);
-      }
-    });
   });
 });
 
@@ -58,14 +47,14 @@ router.post('/user/login-result', (req, res) => {
   query.findOne((err, user) => {
     if (err) return handleError(err);
     if (user) {
-      console.log({user})
-      bcrypt.compare(password, user.password, (err, result) => {
-        if (err) {
-          console.log({error});
-          return;
-        }
-        console.log({result});
-      })
+      // TODO: use comparePassword method from User.js
+      // bcrypt.compare(password, user.password, (err, result) => {
+      //   if (err) {
+      //     console.log({error});
+      //     return;
+      //   }
+      //   console.log({result});
+      // })
     }
   });
   res.sendFile('./index.html', { root: './public/' });
