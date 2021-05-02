@@ -11,10 +11,12 @@
     <form method="post" action="/user/register">
       <p><input type="text" name="username" placeholder="Username (6 - 12 characters)" /></p>
       <p><input type="email" name="email" placeholder="Valid email (Eg: john@gmail.com)" /></p>
-      <p><input type="text" name="password" placeholder="Password (6 - 12 characters)" /></p>
-      <p><input type="text" name="confirmedpassword" placeholder="Confirm your password" /></p>
+      <p><input type="password" name="password" placeholder="Password (6 - 12 characters)" /></p>
+      <p><input type="password" name="confirmedpassword" placeholder="Confirm your password" /></p>
+      <p><input type="checkbox" id="toggler"><label for="toggler">Show Passwords</label></p>
       <p><button type="submit">Register now</button></p>
     </form>
     <p><a href="/">⬅ Home</a></p>
+    <script src="../scripts/script.js"></script>
 </body>
 </html>

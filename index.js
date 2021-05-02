@@ -9,8 +9,8 @@ mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
-.then(async client => {
-  await console.log('Mongoose is connected...');
+.then(client => {
+  console.log('Mongoose is connected...');
   app.listen(port, () => {
     console.log(`Server started at port ${port}`);
   });
