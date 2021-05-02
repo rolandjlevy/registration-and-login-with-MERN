@@ -7,7 +7,8 @@ const port = PORT || 8080;
 
 mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useUnifiedTopology: true
+  useUnifiedTopology: true,
+  useCreateIndex: true
 })
 .then(client => {
   console.log('Mongoose is connected...');

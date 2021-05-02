@@ -1,8 +1,8 @@
-const passwordInputs = document.querySelectorAll('input[name*=password]');
-const toggler = document.querySelector('#toggler');
+const $ = (el) => document.querySelector(el);
+const $$ = (el) => document.querySelectorAll(el);
 
-toggler.addEventListener('click', (e) => {
-  passwordInputs.forEach(item => {
+$('#toggler').addEventListener('click', (e) => {
+  $$('input[name*=password]').forEach(item => {
     if (item.type === "password") {
       item.type = "text";
     } else {

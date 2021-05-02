@@ -17,8 +17,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     const status = err.status || 500;
     const message = err.message || 'unknown';
-    console.log({status})
-    res.status(status).send(`
+    return res.status(status).send(`
         <h1>Error ⚠️</h1>
         <p>${message}</p>
         <p><a href="/">⬅ Home</a></p>
