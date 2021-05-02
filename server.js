@@ -9,5 +9,4 @@ app.use(express.static(__dirname + '/public'));
 const routes = require('./routes/api.js');
 app.use('/', routes);
 
-
 module.exports = app;

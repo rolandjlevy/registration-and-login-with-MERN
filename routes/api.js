@@ -2,6 +2,9 @@ const express = require('express');
 const path = require('path');
 const router = express.Router();
 
+const bcrypt = require('bcrypt');
+const rounds = 10;
+
 const User = require('../models/User.js');
 
 // API routes
@@ -21,9 +24,15 @@ router.post('/user/register-result', (req, res) => {
   // get posted data from form
   const { username, email, password, confirmedpassword } = req.body;
   // instance of model
-  const newUser = new User({ username, email, password, confirmedpassword });
-  // saving data into db
-    newUser.save((error) => {
+  bcrypt.hash(password, rounds, async (err, hash) => {
+    if (err) {
+      console.log({error});
+      res.sendFile('./error.html', { root: './public/' });
+      return;
+    }
+    const newUser = await new User({ username, email, password:hash });
+    // saving data into db
+    newUser.save(error => {
       if (error) {
         console.log({error});
       } else {
@@ -34,11 +43,32 @@ router.post('/user/register-result', (req, res) => {
         `);
       }
     });
+  });
 });
 
 // Login page
-router.post('/user/login', (req, res) => {
+router.get('/user/login', (req, res) => {
   res.sendFile('./login.html', { root: './public/' });
+});
+
+// Login result page 
+router.post('/user/login-result', (req, res) => {
+  const { username, email, password } = req.body;
+  const query  = User.where({ username:username });
+  query.findOne((err, user) => {
+    if (err) return handleError(err);
+    if (user) {
+      console.log({user})
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) {
+          console.log({error});
+          return;
+        }
+        console.log({result});
+      })
+    }
+  });
+  res.sendFile('./index.html', { root: './public/' });
 });
 
 // View all users
