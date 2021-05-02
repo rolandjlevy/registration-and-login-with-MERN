@@ -45,7 +45,7 @@ router.post('/user/login', (req, res, next) => {
   User.findOne({ username:username })
     .then(user => {
       if (!user) {
-        // TODO: display error message
+        // TODO: display 'Username does not exist' error message
         const error = new Error('Username does not exist. Please try again');
         return next(error);
       } else {
@@ -59,7 +59,7 @@ router.post('/user/login', (req, res, next) => {
               <p><a href="/">Home</a></p>
             `);
           } else {
-            // TODO: display error message
+            // TODO: display 'Wrong password error message
             const error = new Error('Wrong password. Please try again');
             return next(error);
           }
