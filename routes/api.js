@@ -7,12 +7,12 @@ const User = require('../models/User.js');
 
 // Homepage
 router.get('/', (req, res) => {
-  res.sendFile('./index.html', { root : __dirname});
+  res.status(200).sendFile('./index.html', { root : __dirname});
 });
 
 // Registration
 router.get('/user/register', (req, res) => {
-  res.sendFile('./register.html', { root: './public/' });
+  res.status(200).sendFile('./register.html', { root: './public/' });
 });
 
 // Registration result
@@ -25,9 +25,9 @@ router.post('/user/register-result', (req, res, next) => {
     if (err) {
       return next(err);
     } else {
-      res.send(`
+      res.status(200).send(`
         <h1>Success!</h1>
-        <p>You have now registered as a new user</p>
+        <p>Welcome ${document.username}, thank you for registering as a new user</p>
         <p><a href="/">Home</a></p>
       `);
     }
@@ -36,53 +36,69 @@ router.post('/user/register-result', (req, res, next) => {
 
 // Login page
 router.get('/user/login', (req, res) => {
-  res.sendFile('./login.html', { root: './public/' });
+  res.status(200).sendFile('./login.html', { root: './public/' });
 });
 
 // Login result page 
 router.post('/user/login-result', (req, res, next) => {
   const { username, password } = req.body;
   User.findOne({ username:username }, function(err, user) {
-    if (err) {
-      return next(err);
-    }
+    if (err) return next(err);
     if (!user) {
       // TODO: display message
       console.log('Username does not exist. Register here...');
       return;
     }
     user.comparePassword(password, function(error, isMatch) {
-      if (error) {
-        return next(error);
-      }
+      if (error) return next(error);
       if (!isMatch) {
         // TODO: display message
         console.log('Wrong password. Please try again');
         return;
       }
     });
-    res.sendFile('./index.html', { root: './public/' });
+    res.status(200).sendFile('./index.html', { root: './public/' });
+  });
+});
+
+// View one user
+router.get('/user/:id', (req, res, next) => {
+  const id = req.params.id;
+  console.log(id);
+  User.findOne({ _id: id }, (err, user) => {
+    if (err) {
+      return next(err);
+    } else {
+      res.status(200).send(`
+        <h1>View one user</h1>
+        <p>Username: ${user.username}</p>
+        <p>Email: ${user.email}</p>
+        <p>ID: ${user._id}</p>
+        <p><a href="/">Home</a></p>
+    `);
+    }
   });
 });
 
 // View all users
-router.get('/users', (req, res) => {
+router.get('/users', (req, res, next) => {
     User.find({  })
     .then(data => {
       let str = '<h1>View all users</h1>';
       data.forEach(user => {
         str += `
         <ul>
+          <li><a href="/user/${user._id}">View user</a></li>
           <li>Username: ${user.username}</li>
           <li>Email: ${user.email}</li>
-        </ul>
-        `
+          <li>ID: ${user._id}</li>
+        </ul>`;
       });
       str += '<p><a href="/">Home</a></p>';
-      res.send(str);
+      res.status(200).send(str);
     })
-    .catch(error => {
-      console.log('error: ', error);
+    .catch(err => {
+      return next(err);
     });
 });
 
