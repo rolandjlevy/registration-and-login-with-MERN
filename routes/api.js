@@ -1,5 +1,4 @@
 const express = require('express');
-const path = require('path');
 const router = express.Router();
 
 const User = require('../models/User.js');
@@ -17,14 +16,14 @@ router.get('/user/register', (req, res) => {
 });
 
 // Registration result
-router.post('/user/register-result', (req, res) => {
+router.post('/user/register-result', (req, res, next) => {
   // get posted data from form
-  const { username, email, password, confirmedpassword } = req.body;
+  const { username, email, password } = req.body;
   const newUser = new User({ username, email, password });
   // saving data into db
-  newUser.save((error, document) => {
-    if (error) {
-      console.log({error, document});
+  newUser.save((err, document) => {
+    if (err) {
+      return next(err);
     } else {
       res.send(`
         <h1>Success!</h1>
@@ -41,23 +40,29 @@ router.get('/user/login', (req, res) => {
 });
 
 // Login result page 
-router.post('/user/login-result', (req, res) => {
-  const { username, email, password } = req.body;
-  const query  = User.where({ username:username });
-  query.findOne((err, user) => {
-    if (err) return handleError(err);
-    if (user) {
-      // TODO: use comparePassword method from User.js
-      // bcrypt.compare(password, user.password, (err, result) => {
-      //   if (err) {
-      //     console.log({error});
-      //     return;
-      //   }
-      //   console.log({result});
-      // })
+router.post('/user/login-result', (req, res, next) => {
+  const { username, password } = req.body;
+  User.findOne({ username:username }, function(err, user) {
+    if (err) {
+      return next(err);
     }
+    if (!user) {
+      // TODO: display message
+      console.log('Username does not exist. Register here...');
+      return;
+    }
+    user.comparePassword(password, function(error, isMatch) {
+      if (error) {
+        return next(error);
+      }
+      if (!isMatch) {
+        // TODO: display message
+        console.log('Wrong password. Please try again');
+        return;
+      }
+    });
+    res.sendFile('./index.html', { root: './public/' });
   });
-  res.sendFile('./index.html', { root: './public/' });
 });
 
 // View all users
@@ -89,6 +94,5 @@ router.get('*', (req, res) => {
     <p><a href="/">Home</a></p>
   `);
 });
-
 
 module.exports = router;
