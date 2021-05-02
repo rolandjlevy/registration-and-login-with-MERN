@@ -60,8 +60,8 @@ router.post('/user/login', (req, res, next) => {
             `);
           } else {
             // TODO: display error message
-            const message = new Error('Wrong password. Please try again');
-            return next(message);
+            const error = new Error('Wrong password. Please try again');
+            return next(error);
           }
         });
       }
