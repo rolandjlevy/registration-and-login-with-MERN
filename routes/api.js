@@ -142,6 +142,17 @@ router.get('/users', (req, res, next) => {
     });
 });
 
+// View all users
+router.get('/userlist', (req, res, next) => {
+  User.find({  })
+  .then(users => {
+    res.status(200).json(users);
+  })
+  .catch(err => {
+    return next(err);
+  });
+});
+
 // Page not found
 router.get('*', (req, res, next) => {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;

@@ -18,14 +18,15 @@ function AppNavBar(props) {
     <div>
       <Navbar color="dark" dark expand="sm" className="mb-5">
         <Container>
-          <NavbarBrand href="/">Users</NavbarBrand>
+          <NavbarBrand href="/">Home</NavbarBrand>
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="https://rolandlevy.co.uk">
-                  Homepage
-                </NavLink>
+                <NavLink href="/">Register</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/">Login</NavLink>
               </NavItem>
             </Nav>
           </Collapse>
