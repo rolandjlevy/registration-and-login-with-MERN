@@ -2,7 +2,6 @@ const app = require('./server.js');
 const mongoose = require('mongoose');
 require('dotenv').config();
 
-
 const { USERNAME, PASSWORD, DB_NAME, PORT } = process.env;
 const port = PORT || 8080;
 
