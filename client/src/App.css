@@ -37,6 +37,11 @@
 	max-width: 1000px;
 }
 
+.form-width {
+	min-width: 400px;
+	max-width: 400px;
+}
+
 .img-thumbnail {
 	padding: 2px;
 	background-color: var(--light-grey);

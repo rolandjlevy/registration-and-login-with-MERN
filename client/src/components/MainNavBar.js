@@ -21,7 +21,7 @@ function AppNavBar(props) {
       <Navbar color="light" light expand="sm" className="mb-5">
         <Container>
           <NavbarBrand href="/" color="ff5100">
-            <FontAwesomeIcon icon={faTools} />{" "}Wellcrom
+            <FontAwesomeIcon icon={faTools} />{" "}WellCrom
           </NavbarBrand>
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>

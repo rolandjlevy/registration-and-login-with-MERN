@@ -23,6 +23,7 @@ router.get('/user/registration', (req, res) => {
 // Registration result
 router.post('/user/register', validate.rules.register, async (req, res, next) => {
   const { username, email, password } = req.body;
+  console.log(req.body);
   if (password) {
     await check('confirmedpassword').equals(password).withMessage('passwords do not match').run(req);
   }
@@ -40,7 +41,7 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
   User.findOne({ username:username })
     .then(user => {
       if (user) {
-        const error = new Error(`Sorry, the username ${username} already exists.`);
+        const error = new Error(`Sorry, the username ${username} already exists. Please try another one.`);
         error.status = unprocessableEntityStatus;
         return next(error);
       } else {
@@ -49,7 +50,8 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
         .then(newUserData => {
           return res.status(200).send({
             error: false,
-            data: newUserData
+            data: newUserData,
+            message: `Thank you ${username}, your user account has been set up. You can now login.`
           });
         })
       }
