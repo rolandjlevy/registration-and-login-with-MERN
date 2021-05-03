@@ -17,7 +17,6 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
     await check('confirmedpassword').equals(password).withMessage('passwords do not match').run(req);
   }
   const errors = validationResult(req);
-  console.log('errors.errors', errors.errors);
   if (!errors.isEmpty()) {
     let errorMessage = 'Invalid input. ';
     errorMessage += 'Email must be valid, and the username and password must be 6 - 24 characters long.';

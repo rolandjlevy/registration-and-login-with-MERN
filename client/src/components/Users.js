@@ -22,7 +22,6 @@ function Users() {
   const loadUsers = useCallback(() => {
     getUsersList().then(result => {
       if (result) {
-        console.log({result});
         setUserList(result);
       }
     });
