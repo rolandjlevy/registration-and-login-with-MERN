@@ -4,7 +4,7 @@
 
 - [Purpose](#purpose-)
 - [Screenshots](#screenshots-)
-- [Setup](#setup-)
+- [Running the app](#running-the-app-)
 - [Technologies](#technologies-)
 - [Features](#features-)
 - [Reference](#reference-)
@@ -21,7 +21,7 @@ The aim of this project is to make an application using the MERN stack which all
 ![homepage](./client/src/images/screen-grab-homepage.jpg)
 ![modal](./client/src/images/screen-grab-modal.jpg)
 
-## Setup ⚙️
+## Running the app ⚙️
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
 - Install dependencies by running `npm install`
@@ -37,11 +37,11 @@ The aim of this project is to make an application using the MERN stack which all
 - Hosting database with [Mongodb Atlas in the cloud](https://www.mongodb.com/cloud/atlas) cloud database
 - Passwords encryted with [bcrypt](https://www.npmjs.com/package/bcrypt)
 - Thorough form validation and sanitization with [express-validator](https://express-validator.github.io/docs/)
-- Running the client and server simultaneously with [concurrently](https://www.npmjs.com/package/concurrently) to
+- Running the client and server simultaneously with [concurrently](https://www.npmjs.com/package/concurrently)
 
 > Front end
 
-- Built with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) which consumes API endpoints
+- Built with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html)
 - Design, layout and responsiveness using [Reactstrap](https://reactstrap.github.io)
 - Images from [Unsplash](https://unsplash.com/)
 - Icons from [Fontawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
