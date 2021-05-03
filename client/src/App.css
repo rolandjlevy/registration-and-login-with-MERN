@@ -1,9 +1,31 @@
 :root {
 	--light-grey: #d4dbde;
-	--primary-orange: #ff1500;
+	--primary-orange-mid: #ff1500;
+	--primary-orange-dark: #c91100;
 }
 
-/* Branding colour for logo */
+/* Change button colour */
+.btn-outline-warning {
+	color: var(--primary-orange-mid);
+	border-color: var(--primary-orange-mid);
+}
+
+.btn-outline-warning:hover {
+	color: #fff;
+	background-color: var(--primary-orange-mid);
+	border-color: var(--primary-orange-mid);
+}
+
+/* Change logo colour */
 .container > .navbar-brand {
-	color: var(--primary-orange);
+	color: var(--primary-orange-mid);
+	transition: color 0.25s ease;
+}
+
+.container > .navbar-brand:hover {
+	color: var(--primary-orange-dark);
+}
+
+.App {
+	height: 100vh;
 }
