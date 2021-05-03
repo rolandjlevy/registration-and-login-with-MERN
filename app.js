@@ -6,11 +6,11 @@ const { ROUTES } = process.env;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/server/public'));
 
-let routes = require('./routes/api-dev.js');
+let routes = require('./server/routes/api-dev.js');
 if (ROUTES === 'server') {
-    routes = require('./routes/api-server.js');
+    routes = require('./server/routes/api-server.js');
 }
 app.use('/', routes);
 
