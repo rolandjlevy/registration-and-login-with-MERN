@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect, useCallback } from 'react';
+import React, { useState, useCallback } from 'react';
 
 import {
   Container,
@@ -6,8 +6,6 @@ import {
   ListGroupItem,
   Button
 } from 'reactstrap';
-
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function Users() {
   const [userList, setUserList] = useState([]);
