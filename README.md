@@ -16,7 +16,7 @@
 
 The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details
 
-## Setup 🎯
+## Setup 🛠️
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
 - Install dependencies by running `npm install`
