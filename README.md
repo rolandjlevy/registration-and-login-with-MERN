@@ -18,13 +18,13 @@ The aim of this project is to make an application using the MERN stack which all
 
 ## Setup 🛠️
 
-- 1. Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
-- 2. Go into the directory named `registration-and-login-with-MERN`
-- 3. Install the server dependencies by running `npm install`
-- 4. Install the client dependencies by running `npm run client-install`
-- 5. Create a `.env` file in the root directory
-- 6. Add the environment variables to the `.env` file (I will provide these in an email)
-- 7. Start the client and server with `npm run dev` then go to `http://localhost:3000`
+- Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
+- Go into the directory named `registration-and-login-with-MERN`
+- Install the server dependencies by running `npm install`
+- Install the client dependencies by running `npm run client-install`
+- Create a `.env` file in the root directory
+- Add the environment variables to the `.env` file (I will provide these in an email)
+- Start the client and server with `npm run dev` then go to `http://localhost:3000`
 
 ## Technologies 👨‍💻
 
