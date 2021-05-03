@@ -13,12 +13,13 @@ import {
   NavLink
 } from 'reactstrap';
 
-function AppNavBar(props) {
+function MainNavBar(props) {
+  const { onToggleRegister, onToggleLogin } = props;
   const [isOpen, setIsOpen] = useState(false);
   const handleToggle = () => setIsOpen(!isOpen);
   return (
     <div>
-      <Navbar color="light" light expand="sm" className="mb-5">
+      <Navbar color="light" light fixed="top" expand="sm" className="mb-5">
         <Container>
           <NavbarBrand href="/" color="ff5100">
             <FontAwesomeIcon icon={faTools} />{" "}WellCrom
@@ -27,12 +28,12 @@ function AppNavBar(props) {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">
+                <NavLink onClick={onToggleRegister}>
                   Register{" "}<FontAwesomeIcon icon={faUser} />
                 </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">
+                <NavLink onClick={onToggleLogin}>
                   Login{" "}<FontAwesomeIcon icon={faSignInAlt} />
                 </NavLink>
               </NavItem>
@@ -44,4 +45,4 @@ function AppNavBar(props) {
   );
 }
 
-export default AppNavBar;
+export default MainNavBar;

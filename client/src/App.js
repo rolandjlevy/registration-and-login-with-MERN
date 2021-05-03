@@ -2,31 +2,47 @@ import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-import AppNavBar from './components/MainNavBar';
+import MainNavBar from './components/MainNavBar';
 import HomepageContent from './components/HomepageContent';
 import HomepageThumbnails from './components/HomepageThumbnails';
-// import ModalForm from './components/ModalForm';
+import RegistrationModal from './components/RegistrationModal';
+import LoginModal from './components/LoginModal';
 
 function App() {
 
-  // const [toggleState, setToggleState] = useState(false);
+  const [toggleRegisterState, setRegisterToggleState] = useState(false);
+  const [toggleLoginState, setLoginToggleState] = useState(false);
 
-  // const handleModalToggle = () => {
-  //   setToggleState(!toggleState);
-  // }
+  const handleRegisterModalToggle = () => {
+    setRegisterToggleState(!toggleRegisterState);
+  }
+  const handleLoginModalToggle = () => {
+    setLoginToggleState(!toggleLoginState);
+  }
 
   return (
     <div className="App">
-      <AppNavBar />
-      <HomepageContent />
+      <MainNavBar 
+        onToggleRegister={handleRegisterModalToggle} 
+        onToggleLogin={handleLoginModalToggle}
+      />
+      <HomepageContent 
+        onToggleRegister={handleRegisterModalToggle} 
+        onToggleLogin={handleLoginModalToggle}
+      />
       <HomepageThumbnails />
-      {/* <ModalForm 
-        onToggle={handleModalToggle} 
-        toggleState={toggleState} 
-        modalTitle="Register as a new user" 
-        modalType="registration" 
+      <RegistrationModal 
+        onToggleRegister={handleRegisterModalToggle} 
+        toggleState={toggleRegisterState} 
+        modalTitle="Register as a new customer" 
         className=""
-      /> */}
+      />
+      <LoginModal 
+        onToggleLogin={handleLoginModalToggle} 
+        toggleState={toggleLoginState} 
+        modalTitle="Login as an existing customer" 
+        className=""
+      />
     </div>
   );
 }

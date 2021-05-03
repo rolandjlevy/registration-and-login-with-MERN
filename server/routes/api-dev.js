@@ -10,16 +10,6 @@ const unprocessableEntityStatus = 422;
 
 // API routes 
 
-// Homepage
-router.get('/', (req, res) => {
-  res.status(200).sendFile('./index.html', { root : __dirname});
-});
-
-// Registration page
-router.get('/user/registration', (req, res) => {
-  res.status(200).sendFile('./registration.html', { root: './server/public/' });
-});
-
 // Registration result
 router.post('/user/register', validate.rules.register, async (req, res, next) => {
   const { username, email, password } = req.body;
@@ -61,11 +51,6 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
     });
 });
 
-// Login page
-router.get('/user/login-page', (req, res) => {
-  res.status(200).sendFile('./login-page.html', { root: './server/public/' });
-});
-
 // Login result
 router.post('/user/login', validate.rules.login, (req, res, next) => {
   const { username, password } = req.body;
@@ -91,7 +76,8 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
           } else {
             res.status(200).json({
               error: false,
-              data: user
+              data: user,
+              message: `Thank you ${username}, you have logged in successfully.`
             });
           }
         });

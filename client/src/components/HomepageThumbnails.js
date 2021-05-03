@@ -28,11 +28,6 @@ function HomepageThumbnails() {
         </a>
       </Col>
     </Row>
-    <Row>
-      <Col className='p-2'>
-        <Users />
-      </Col>
-    </Row>
     </Container>
   );
 }

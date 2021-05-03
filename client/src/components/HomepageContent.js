@@ -1,34 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Jumbotron, Container, Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
-import ModalForm from './ModalForm';
-
 function HomepageContent(props) {
-
-  // onToggle
-
-  const [toggleState, setToggleState] = useState(false);
-
-  const handleModalToggle = () => {
-    setToggleState(!toggleState);
-  }
-
+  const { onToggleRegister, onToggleLogin } = props;
   return (
-    <div className="vertical-center">
-      <ModalForm 
-        onToggle={handleModalToggle} 
-        toggleState={toggleState} 
-        modalTitle="Register as a new user" 
-        modalType="registration" 
-        className=""
-      />
+    <div className="mt-5 vertical-center">
       <Jumbotron fluid className="m-5 p-5 rounded max-width">
         <Container fluid>
           <Row>
             <Col>
-              <h1 className="display-4">Welcome to WellCrom!</h1>
+              <h1 className="display-5">Welcome to WellCrom!</h1>
               <p className="lead">A supplier of industrial tools, offering an unrivalled choice of products to all industries, professions and trades</p>
               <hr className="my-2" />
               <p>Of all the work we do, we are famous for Safety, Cutting Tools, Hand Tools and Power Tools and Abrasives. We have expertise within our technical teams who can provide audits and offer advice on how your business can improve with the help of these four key categories.</p>
@@ -38,12 +21,12 @@ function HomepageContent(props) {
           <Row className="mt-3">
             <Col sm="6">
               <p className="lead">
-                New customers <Button color="warning" outline onClick={handleModalToggle}>Register{" "}<FontAwesomeIcon icon={faUser} /></Button>
+                New customer <Button color="warning" outline onClick={onToggleRegister}>Register{" "}<FontAwesomeIcon icon={faUser} /></Button>
               </p>
             </Col>
             <Col sm="6">
               <p className="lead">
-                Existing customers <Button color="warning" outline href="/">Login{" "}<FontAwesomeIcon icon={faSignInAlt} /></Button>
+                Existing customer <Button color="warning" outline onClick={onToggleLogin}>Login{" "}<FontAwesomeIcon icon={faSignInAlt} /></Button>
               </p>
             </Col>
           </Row>
