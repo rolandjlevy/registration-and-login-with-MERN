@@ -6,6 +6,8 @@ const { check, validationResult } = require('express-validator');
 const Validation = require('../classes/Validation.js');
 const validate = new Validation();
 
+const unprocessableEntityStatus = 422;
+
 // API routes 
 
 // Homepage
@@ -27,20 +29,20 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     let errorMessage = 'Invalid input. ';
-    errorMessage += 'Email address must be completed and valid, and the username and password must be completed and be 6 - 12 characters long. ';
+    errorMessage += 'Email address must be valid, and the username and password must be 6 - 12 characters long. ';
     if (errors.errors.length == 1 && errors.errors[0].param === 'confirmedpassword') {
       errorMessage = 'The password and confirmation password do not match. ';
     }
     errorMessage += `<a href="/user/registration">Please try again</a>`;
     const error = new Error(errorMessage);
-    error.status = 422;
+    error.status = unprocessableEntityStatus;
     return next(error);
   }
   User.findOne({ username:username })
     .then(user => {
       if (user) {
         const error = new Error(`Sorry, the username ${username} already exists. <a href="/user/login-page">Please try again</a>`);
-        error.status = 422;
+        error.status = unprocessableEntityStatus;
         return next(error);
       } else {
         const newUser = new User({ username, email, password });
@@ -70,21 +72,21 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new Error(`Invalid input. The username and password must be completed and be 6 - 12 characters long. <a href="/user/login-page">Please try again</a>`);
-    error.status = 422;
+    error.status = unprocessableEntityStatus;
     return next(error);
   }
   User.findOne({ username:username })
     .then(user => {
       if (!user) {
         const error = new Error('Username does not exist. <a href="/user/login-page">Please try again</a>');
-        error.status = 422;
+        error.status = unprocessableEntityStatus;
         return next(error);
       } else {
         user.comparePassword(password, function(error, isMatch) {
           if (error) return next(error);
           if (!isMatch) {
             const error = new Error('Incorrect password. <a href="/user/login-page">Please try again</a>');
-            error.status = 422;
+            error.status = unprocessableEntityStatus;
             return next(error);
           } else {
             res.status(200).send(`

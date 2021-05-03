@@ -5,8 +5,7 @@ The aim of this project is to make an application using the MERN stack which all
 ## Setup ⚙️
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
-- Install dependencies with `npm install`
-- Create a `.env` file in the root directory
-- Add the `MONGODB_URI` and `PORT` variables to the `.env` file (I will provide these in an email)
-- Run `npm run dev` to start the client and the server
-- Go to `http://localhost:3000`
+- Install dependencies by running `npm install`
+- Create a `.env` file in the root directory and add the environment variables (I will provide these in an email)
+- For the React UI and back end, run `npm run dev` and go to `http://localhost:3000`
+- For the back end only, run `npm run server` and go to `http://localhost:8080`

@@ -6,8 +6,8 @@
   "scripts": {
     "client-install": "npm install --prefix client",
     "client": "npm start --prefix client",
-    "server": "nodemon index.js",
-    "dev": "NODE_ENV=dev concurrently \"npm run server\" \"npm run client\""
+    "server": "nodemon server.js",
+    "dev": "ROUTES=dev concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
