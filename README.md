@@ -46,12 +46,13 @@ The aim of this project is to make an application using the MERN stack which all
 
 ## Improvements 👌
 
-> If I had more time I would implement the following:
+> If I had more time I would do the following:
 
-- State management with Redux
+- Implement state management with Redux
 - Unit testing
 - JWT tokens for authentication
-- React router for page navigation
+- Use the `he` HTML entity encoder / decoder to protect against XSS
+- Use React router for page navigation
 
 ## Reference 📙
 
