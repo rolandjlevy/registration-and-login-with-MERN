@@ -31,6 +31,7 @@ app.use((err, req, res, next) => {
         `);
     }
     return res.status(status).json({
+        "error": true,
         "message": message
     });
 });

@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTools, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
@@ -21,19 +21,19 @@ function AppNavBar(props) {
       <Navbar color="light" light expand="sm" className="mb-5">
         <Container>
           <NavbarBrand href="/" color="ff5100">
-            <FontAwesomeIcon icon={faTools} /> Wellcrom
+            <FontAwesomeIcon icon={faTools} />{" "}Wellcrom
           </NavbarBrand>
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
                 <NavLink href="/">
-                  <FontAwesomeIcon icon={faUser} /> Register
+                  Register{" "}<FontAwesomeIcon icon={faUser} />
                 </NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/">
-                  <FontAwesomeIcon icon={faSignInAlt} /> Login
+                  Login{" "}<FontAwesomeIcon icon={faSignInAlt} />
                 </NavLink>
               </NavItem>
             </Nav>

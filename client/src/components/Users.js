@@ -24,6 +24,7 @@ function Users() {
   const loadUsers = useCallback(() => {
     getUsersList().then(result => {
       if (result) {
+        console.log({result});
         setUserList(result);
       }
     });
@@ -38,12 +39,6 @@ function Users() {
     .catch(error => error);
   }
 
-  // <h1>View user details</h1>
-  // <p>Username: ${user.username}</p>
-  // <p>Email: ${user.email}</p>
-  // <p>Date registered: ${new Date(Number(user.date)).toISOString()}</p>
-  // <p>ID: ${user._id}</p>
-
   return (
     <Container>
       <Button 
@@ -51,7 +46,7 @@ function Users() {
         color="light"
       >Load users</Button>
       <ListGroup>
-      {(userList.length && userList.map(user => {
+      {(userList && userList.data && userList.data.map(user => {
         return <ListGroupItem 
                 key={user._id}>
                   {user.username}

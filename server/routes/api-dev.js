@@ -48,8 +48,8 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
         newUser.save()
         .then(newUserData => {
           return res.status(200).send({
-            result: 'saved successfully',
-            newUserData
+            error: false,
+            data: newUserData
           });
         })
       }
@@ -87,7 +87,10 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
             error.status = unprocessableEntityStatus;
             return next(error);
           } else {
-            res.status(200).json(user);
+            res.status(200).json({
+              error: false,
+              data: user
+            });
           }
         });
       }
@@ -101,7 +104,10 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
 router.get('/user/:id', (req, res, next) => {
   User.findOne({ _id: req.params.id })
     .then(user => {
-      res.status(200).json(user);
+      res.status(200).json({
+        error: false,
+        ...user
+      });
     })
     .catch(err =>  {
       return next(err);
@@ -112,7 +118,10 @@ router.get('/user/:id', (req, res, next) => {
 router.get('/users', (req, res, next) => {
   User.find({  })
   .then(users => {
-    res.status(200).json(users);
+    res.status(200).json({
+      error: false,
+      data: users
+    });
   })
   .catch(err => {
     return next(err);
@@ -123,7 +132,8 @@ router.get('/users', (req, res, next) => {
 router.get('*', (req, res, next) => {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
   res.status(404).json({
-    "message" : "Error 404! Page not found. Unable to access " + url
+    error: true,
+    message: 'Error 404! Page not found. Unable to access ' + url
   });
 });
 
