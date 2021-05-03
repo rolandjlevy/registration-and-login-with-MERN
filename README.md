@@ -55,6 +55,7 @@ The aim of this project is to make an application using the MERN stack which all
 - JWT tokens for authentication
 - Use the `he` HTML entity encoder / decoder to protect against XSS
 - Use React router for page navigation
+- Host the app on Heroku so it can run in the cloud
 
 ## Reference 📙
 
