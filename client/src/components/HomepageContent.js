@@ -10,12 +10,12 @@ function HomepageContent() {
   const [toggleState, setToggleState] = useState(false);
 
   const handleModalToggle = () => {
-    setToggleState(true);
+    setToggleState(!toggleState);
   }
 
   return (
     <div className="vertical-center">
-      <ModalForm toggleState={toggleState} modalTitle="Register as a new user" />
+      <ModalForm onToggle={handleModalToggle} toggleState={toggleState} modalTitle="Register as a new user" />
       <Jumbotron fluid className="m-5 p-5 rounded max-width">
         <Container fluid>
           <Row>
