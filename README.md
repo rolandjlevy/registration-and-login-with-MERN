@@ -3,10 +3,10 @@
 ## Table of contents
 
 - [Purpose](#purpose-)
-- [Screenshots](#screenshots-)
 - [Running the app](#running-the-app-)
 - [Technologies](#technologies-)
-- [Features](#features-)
+- [Screenshots](#screenshots-)
+- [Improvements](#improvements-)
 - [Reference](#reference-)
 - [Contact](#contact-)
 
@@ -16,12 +16,7 @@
 
 The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details
 
-## Screenshots 📷
-
-![homepage](./client/src/images/screen-grab-homepage.jpg)
-![modal](./client/src/images/screen-grab-modal.jpg)
-
-## Running the app ⚙️
+## Running the app
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
 - Install dependencies by running `npm install`
@@ -45,6 +40,11 @@ The aim of this project is to make an application using the MERN stack which all
 - Design, layout and responsiveness using [Reactstrap](https://reactstrap.github.io)
 - Images from [Unsplash](https://unsplash.com/)
 - Icons from [Fontawesome](https://fontawesome.com/how-to-use/on-the-web/using-with/react)
+
+## Screenshots 📷
+
+![homepage](./client/src/images/screen-grab-homepage.jpg)
+![modal](./client/src/images/screen-grab-modal.jpg)
 
 ## Improvements 👌
 
