@@ -3,7 +3,7 @@
 ## Table of contents
 
 - [Purpose](#purpose-)
-- [Running the app](#running-the-app-)
+- [Setup](#setup-)
 - [Technologies](#technologies-)
 - [Screenshots](#screenshots-)
 - [Improvements](#improvements-)
@@ -16,7 +16,7 @@
 
 The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details
 
-## Running the app
+## Setup 🎯
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
 - Install dependencies by running `npm install`
