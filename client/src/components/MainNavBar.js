@@ -22,7 +22,7 @@ function MainNavBar(props) {
       <Navbar color="light" light fixed="top" expand="sm" className="mb-5">
         <Container>
           <NavbarBrand href="/" color="ff5100">
-            <FontAwesomeIcon icon={faTools} />{" "}WellCrom
+            <FontAwesomeIcon icon={faTools} />{" "}Cromwell
           </NavbarBrand>
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>

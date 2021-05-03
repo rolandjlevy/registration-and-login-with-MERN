@@ -4,7 +4,7 @@ import './App.css';
 
 import MainNavBar from './components/MainNavBar';
 import HomepageContent from './components/HomepageContent';
-import HomepageThumbnails from './components/HomepageThumbnails';
+import HomepageThumbnails from './components/HomepageCards';
 import RegistrationModal from './components/RegistrationModal';
 import LoginModal from './components/LoginModal';
 

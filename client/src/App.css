@@ -33,7 +33,11 @@
 	align-items: center;
 }
 
-.max-width {
+.max-width-970 {
+	max-width: 970px;
+}
+
+.max-width-1000 {
 	max-width: 1000px;
 }
 
@@ -47,7 +51,7 @@ body {
 }
 
 .img-thumbnail {
-	padding: 2px;
+	padding: 0;
 	background-color: var(--light-grey);
 }
 
@@ -55,6 +59,14 @@ body {
 	box-shadow: 0 6px 9px -3px #00000055;
 }
 
+.card {
+	border: none;
+}
+
 .nav-link {
 	cursor: pointer;
+}
+
+.mt-8 {
+	margin-top: 80px;
 }
