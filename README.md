@@ -29,7 +29,7 @@ The aim of this project is to make an application using the MERN stack which all
 > Back end
 
 - Node, Express, MongoDB, Mongoose
-- Hosting database with [Mongodb Atlas in the cloud](https://www.mongodb.com/cloud/atlas) cloud database
+- Hosting database with [Mongodb Atlas](https://www.mongodb.com/cloud/atlas) cloud database
 - Passwords encryted with [bcrypt](https://www.npmjs.com/package/bcrypt)
 - Thorough form validation and sanitization with [express-validator](https://express-validator.github.io/docs/)
 - Running the client and server simultaneously with [concurrently](https://www.npmjs.com/package/concurrently)
