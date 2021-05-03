@@ -10,9 +10,9 @@ import supportingGreen from '../images/supporting-green-industries.jpg';
 
 function HomepageCards() {
   return (
-    <Container className="p-0 max-width-1000">
+    <Container className="mb-5 p-0 max-width-1000">
     <Row className='m-0 p-0'>
-      <Col sm="4" xs="12" className=''>
+      <Col sm="4" xs="12" className='mb-4'>
         <HomepageCard 
           img={hereForYou} 
           title="Our Exclusive Brands Collection"
@@ -21,21 +21,21 @@ function HomepageCards() {
           link="https://www.cromwell.co.uk/info/return-to-work-the-new-normal" 
         />
       </Col>
-      <Col sm="4" xs="12" className=''>
+      <Col sm="4" xs="12" className='mb-4'>
         <HomepageCard 
           img={supportingGreen} 
           title="Supporting Pioneering Green Industries"
           subtitle="Valuing Renewable Energy"
-          bodyText="A clean energy revolution is taking place globally and as the world continues to change, we want to  support pioneering green industries that create our sustainable future."
+          bodyText="A clean energy revolution is taking place globally and as the world continues to change, we want to  support pioneering green industries that create our future."
           link="https://www.cromwell.co.uk/info/renewable-energy" 
         />
       </Col>
-      <Col sm="4" xs="12" className=''>
+      <Col sm="4" xs="12" className='mb-4'>
         <HomepageCard 
           img={safetyAtWork} 
           title="COVID-19 advice &amp; best practice"
           subtitle="World Day for Safety &amp; Health"
-          bodyText="Our fantastic expert guides on returning to the workplace are here to help you ease safely back into your working environment. With information and expert recommendations."
+          bodyText="Our expert guides on returning to the workplace are here to help you ease safely back into your working environment. With information and expert recommendations."
           link="https://www.cromwell.co.uk/info/covid-19-information" 
         />
       </Col>

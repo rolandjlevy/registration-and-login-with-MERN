@@ -1,7 +1,6 @@
 import React from 'react';
 import {
-  Card, CardText, CardBody, CardLink,
-  CardTitle, CardSubtitle, Button
+  Card, CardText, CardBody, CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
 const HomepageCard = (props) => {
@@ -13,7 +12,7 @@ const HomepageCard = (props) => {
           <CardTitle tag="h5">{title}</CardTitle>
           <CardSubtitle tag="h6" className="mb-2 text-muted">{subtitle}</CardSubtitle>
         </CardBody>
-        <img width="100%" src={img} alt="Card image cap" />
+        <img width="100%" src={img} alt={subtitle} />
         <CardBody>
           <CardText>{bodyText}</CardText>
           <Button href={link}>Learn more</Button>
