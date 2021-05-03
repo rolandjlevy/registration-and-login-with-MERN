@@ -47,10 +47,9 @@ function RegistrationForm(props) {
   }
 
   return (
-    <div className="m-5 vertical-center">
-      <Jumbotron fluid className="p-4 rounded form-width">
+    <div className="vertical-center">
+      <Jumbotron fluid className="m-0 p-4 rounded w-100">
         <Container fluid>
-          <p className="lead font-weight-bold">Register as a new user</p>
           <Form onSubmit={handleSubmit} noValidate>
             <FormGroup>
               <Label for="username">Username</Label>
@@ -73,7 +72,7 @@ function RegistrationForm(props) {
                 <Input type="checkbox" id="toggler" onClick={togglePasswordVisibilty} />{' '}Show Passwords
               </Label>
             </FormGroup>
-            <Button type="submit" className="mt-3 mb-3">Register now</Button>
+            <Button type="submit" className="mt-3 mb-4">Register now</Button>
           </Form>
           {errorMessage &&
           <Alert color={alertType}>

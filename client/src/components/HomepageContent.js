@@ -15,7 +15,13 @@ function HomepageContent() {
 
   return (
     <div className="vertical-center">
-      <ModalForm onToggle={handleModalToggle} toggleState={toggleState} modalTitle="Register as a new user" />
+      <ModalForm 
+        onToggle={handleModalToggle} 
+        toggleState={toggleState} 
+        modalTitle="Register as a new user" 
+        modalType="registration" 
+        className=""
+      />
       <Jumbotron fluid className="m-5 p-5 rounded max-width">
         <Container fluid>
           <Row>

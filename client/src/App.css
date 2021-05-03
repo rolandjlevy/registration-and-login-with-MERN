@@ -42,6 +42,9 @@
 	max-width: 450px;
 }
 
+body {
+	background-image: url(images/grinder-sparks-bg.jpg);
+}
 .img-thumbnail {
 	padding: 2px;
 	background-color: var(--light-grey);

@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import { Modal, ModalHeader, ModalBody } from 'reactstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
+
+import RegistrationForm from './RegistrationForm';
 
 const ModalForm = (props) => {
   const {
     className,
     modalTitle,
+    modalType,
     onToggle,
     toggleState
   } = props;
 
-  // const [modal, setModal] = useState(false);
-  // const toggle = () => setModal(!modal);
-
   return (
     <div>
-      <Modal isOpen={toggleState}  toggle={onToggle} className={className}>
-        <ModalHeader toggle={onToggle}>{modalTitle}</ModalHeader>
-        <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      <Modal isOpen={toggleState} toggle={onToggle} className={className}>
+        <ModalHeader toggle={onToggle}>
+          {modalTitle}{" "}{modalType === 'registration' ? <FontAwesomeIcon icon={faUser} /> : <FontAwesomeIcon icon={faSignInAlt} />}
+        </ModalHeader>
+        <ModalBody className="p-0">
+          <RegistrationForm />
         </ModalBody>
       </Modal>
     </div>
