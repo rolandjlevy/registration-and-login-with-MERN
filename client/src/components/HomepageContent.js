@@ -5,7 +5,9 @@ import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 import ModalForm from './ModalForm';
 
-function HomepageContent() {
+function HomepageContent(props) {
+
+  // onToggle
 
   const [toggleState, setToggleState] = useState(false);
 
