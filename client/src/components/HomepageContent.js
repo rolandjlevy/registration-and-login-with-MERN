@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Jumbotron, Container, Row, Col, Button } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
+import ModalForm from './ModalForm';
+
 function HomepageContent() {
+
+  const [toggleState, setToggleState] = useState(false);
+
+  const handleModalToggle = () => {
+    setToggleState(true);
+  }
+
   return (
     <div className="vertical-center">
+      <ModalForm toggleState={toggleState} modalTitle="Register as a new user" />
       <Jumbotron fluid className="m-5 p-5 rounded max-width">
         <Container fluid>
           <Row>
@@ -20,7 +30,7 @@ function HomepageContent() {
           <Row className="mt-3">
             <Col sm="6">
               <p className="lead">
-                New customers <Button color="warning" outline href="/" target="_blank">Register{" "}<FontAwesomeIcon icon={faUser} /></Button>
+                New customers <Button color="warning" outline onClick={handleModalToggle}>Register{" "}<FontAwesomeIcon icon={faUser} /></Button>
               </p>
             </Col>
             <Col sm="6">

@@ -23,14 +23,14 @@ router.get('/user/registration', (req, res) => {
 // Registration result
 router.post('/user/register', validate.rules.register, async (req, res, next) => {
   const { username, email, password } = req.body;
-  console.log(req.body);
   if (password) {
     await check('confirmedpassword').equals(password).withMessage('passwords do not match').run(req);
   }
   const errors = validationResult(req);
+  console.log('errors.errors', errors.errors);
   if (!errors.isEmpty()) {
     let errorMessage = 'Invalid input. ';
-    errorMessage += 'Email must be valid, and the username and password must be 6 - 12 characters long.';
+    errorMessage += 'Email must be valid, and the username and password must be 6 - 24 characters long.';
     if (errors.errors.length == 1 && errors.errors[0].param === 'confirmedpassword') {
       errorMessage = 'The password and confirmation password do not match.';
     }
@@ -41,7 +41,7 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
   User.findOne({ username:username })
     .then(user => {
       if (user) {
-        const error = new Error(`Sorry, the username ${username} already exists. Please try another one.`);
+        const error = new Error(`Sorry, the username ${username} already exists. Please try a different one.`);
         error.status = unprocessableEntityStatus;
         return next(error);
       } else {
@@ -71,7 +71,7 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
   const { username, password } = req.body;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('Invalid input. The username and password must be completed and be 6 - 12 characters long');
+    const error = new Error('Invalid input. The username and password must be completed and be 6 - 24 characters long');
     error.status = unprocessableEntityStatus;
     return next(error);
   }

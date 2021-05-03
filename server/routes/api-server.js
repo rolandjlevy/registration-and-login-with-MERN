@@ -29,7 +29,7 @@ router.post('/user/register', validate.rules.register, async (req, res, next) =>
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     let errorMessage = 'Invalid input. ';
-    errorMessage += 'Email address must be valid, and the username and password must be 6 - 12 characters long. ';
+    errorMessage += 'Email address must be valid, and the username and password must be 6 - 24 characters long. ';
     if (errors.errors.length == 1 && errors.errors[0].param === 'confirmedpassword') {
       errorMessage = 'The password and confirmation password do not match. ';
     }
@@ -71,7 +71,7 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
   const { username, password } = req.body;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error(`Invalid input. The username and password must be completed and be 6 - 12 characters long. <a href="/user/login-page">Please try again</a>`);
+    const error = new Error(`Invalid input. The username and password must be completed and be 6 - 24 characters long. <a href="/user/login-page">Please try again</a>`);
     error.status = unprocessableEntityStatus;
     return next(error);
   }

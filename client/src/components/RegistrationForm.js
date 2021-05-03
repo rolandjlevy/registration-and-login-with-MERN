@@ -22,6 +22,7 @@ function RegistrationForm(props) {
   }
 
   const handleChange = (event) => {
+    if (errorMessage.length) setErrorMessage('');
     const key = event.target.id;
     setFormState({
       ...formState,
@@ -38,12 +39,12 @@ function RegistrationForm(props) {
     })
     .then(res => res.json())
     .then(result => {
-      console.log(result);
       const alertColor = result.error ? "danger" : "success";
+      const emoji = result.error ? '⚠️ ' : '👍 ';
       setAlertType(alertColor);
-      setErrorMessage(result.message);
+      setErrorMessage(emoji + result.message);
     });
-}
+  }
 
   return (
     <div className="m-5 vertical-center">
@@ -53,7 +54,7 @@ function RegistrationForm(props) {
           <Form onSubmit={handleSubmit} noValidate>
             <FormGroup>
               <Label for="username">Username</Label>
-              <Input type="username" name="username" id="username" placeholder="Username (6 - 12 characters)" onChange={handleChange} />
+              <Input type="username" name="username" id="username" placeholder="Username (6 - 24 characters)" onChange={handleChange} />
             </FormGroup>
             <FormGroup>
               <Label for="email">Email</Label>
@@ -61,7 +62,7 @@ function RegistrationForm(props) {
             </FormGroup>
             <FormGroup>
               <Label for="password">Password</Label>
-              <Input type={passwordsHidden ? "password" : "text"} name="password" id="password" placeholder="Password (6 - 12 characters)"  onChange={handleChange} />
+              <Input type={passwordsHidden ? "password" : "text"} name="password" id="password" placeholder="Password (6 - 24 characters)"  onChange={handleChange} />
             </FormGroup>
             <FormGroup>
               <Label for="password">Confirm your password</Label>
