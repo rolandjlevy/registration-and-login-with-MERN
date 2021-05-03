@@ -38,7 +38,9 @@ The aim of this project is to make an application using the MERN stack which all
 - Passwords encryted with [bcrypt](https://www.npmjs.com/package/bcrypt)
 - Thorough form validation and sanitization with [express-validator](https://express-validator.github.io/docs/)
 - Running the client and server simultaneously with [concurrently](https://www.npmjs.com/package/concurrently) to
-  > Front end
+
+> Front end
+
 - Built with [Create React App](https://reactjs.org/docs/create-a-new-react-app.html) which consumes API endpoints
 - Design, layout and responsiveness using [Reactstrap](https://reactstrap.github.io)
 - Images from [Unsplash](https://unsplash.com/)
