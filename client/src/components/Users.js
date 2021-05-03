@@ -46,10 +46,17 @@ function Users() {
 
   return (
     <Container>
-      <Button onClick={loadUsers}>Load users</Button>
+      <Button 
+        onClick={loadUsers} 
+        color="light"
+      >Load users</Button>
       <ListGroup>
       {(userList.length && userList.map(user => {
-        return <ListGroupItem key={user._id}>{user.username}<Button onClick={() => { getUser(user._id)}}>&times;</Button></ListGroupItem>
+        return <ListGroupItem 
+                key={user._id}>
+                  {user.username}
+                  <Button onClick={() => { getUser(user._id)}}>&times;</Button>
+                </ListGroupItem>
       })) || 'No users found'}
       </ListGroup>
     </Container>

@@ -1,4 +1,6 @@
 import React, { Fragment, useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTools, faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 
 import {
   Collapse,
@@ -16,17 +18,23 @@ function AppNavBar(props) {
   const handleToggle = () => setIsOpen(!isOpen);
   return (
     <div>
-      <Navbar color="dark" dark expand="sm" className="mb-5">
+      <Navbar color="light" light expand="sm" className="mb-5">
         <Container>
-          <NavbarBrand href="/">Home</NavbarBrand>
+          <NavbarBrand href="/" color="ff5100">
+            <FontAwesomeIcon icon={faTools} /> Wellcrom
+          </NavbarBrand>
           <NavbarToggler onClick={handleToggle} />
           <Collapse isOpen={isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink href="/">Register</NavLink>
+                <NavLink href="/">
+                  <FontAwesomeIcon icon={faUser} /> Register
+                </NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/">Login</NavLink>
+                <NavLink href="/">
+                  <FontAwesomeIcon icon={faSignInAlt} /> Login
+                </NavLink>
               </NavItem>
             </Nav>
           </Collapse>

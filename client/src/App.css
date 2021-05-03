@@ -1,0 +1,9 @@
+:root {
+	--light-grey: #d4dbde;
+	--primary-orange: #ff1500;
+}
+
+/* Branding colour for logo */
+.container > .navbar-brand {
+	color: var(--primary-orange);
+}
