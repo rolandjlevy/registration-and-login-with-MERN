@@ -6,7 +6,7 @@ import { faUser, faSignInAlt } from '@fortawesome/free-solid-svg-icons';
 function HomepageContent(props) {
   const { onToggleRegister, onToggleLogin } = props;
   return (
-    <div className="mt-5 vertical-center">
+    <div className="mt-8 mb-5 vertical-center">
       <Jumbotron fluid className="m-3 p-5 rounded max-width-970">
         <Container fluid>
           <Row>

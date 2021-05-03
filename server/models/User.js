@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const dateFormat = require('dateformat');
 
 const UserSchema = new mongoose.Schema({
   username: {
@@ -17,7 +18,7 @@ const UserSchema = new mongoose.Schema({
   },
   date: {
     type: String,
-    default: Date.now()
+    default: dateFormat(Date.now(), 'GMT:dd/mm/yyyy, h:MM:ss TT')
   }
 });
 

@@ -80,7 +80,7 @@ function LoginForm(props) {
             <ul>
               <li><strong>User name</strong>: {userDetails.username}</li>
               <li><strong>Email address</strong>: {userDetails.email}</li>
-              <li><strong>Registration date</strong>: {userDetails.date && new Date(Number(userDetails.date)).toISOString()}</li>
+              <li><strong>Registration time</strong>: {userDetails.date && userDetails.date}</li>
               <li><strong>Customer ID</strong>: {userDetails._id}</li>
             </ul>)}
         </Container>
