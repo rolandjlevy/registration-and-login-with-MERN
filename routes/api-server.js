@@ -105,7 +105,14 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
 router.get('/user/:id', (req, res, next) => {
   User.findOne({ _id: req.params.id })
     .then(user => {
-      res.status(200).json(user);
+      res.status(200).send(`
+        <h1>View user details</h1>
+        <p>Username: ${user.username}</p>
+        <p>Email: ${user.email}</p>
+        <p>Date registered: ${new Date(Number(user.date)).toISOString()}</p>
+        <p>ID: ${user._id}</p>
+        <p><a href="/">⬅ Home</a> | <a href="/users">All users</a></p>
+    `);
     })
     .catch(err =>  {
       return next(err);
@@ -114,21 +121,35 @@ router.get('/user/:id', (req, res, next) => {
 
 // View all users
 router.get('/users', (req, res, next) => {
-  User.find({  })
-  .then(users => {
-    res.status(200).json(users);
-  })
-  .catch(err => {
-    return next(err);
-  });
+    User.find({  })
+    .then(users => {
+      let str = '<h1>View all users</h1>';
+      users.forEach(user => {
+        str += `
+        <ul>
+          <li><a href="/user/${user._id}">View user</a></li>
+          <li>Username: ${user.username}</li>
+          <li>Email: ${user.email}</li>
+          <li>Date registered: ${new Date(Number(user.date)).toISOString()}</li>
+          <li>ID: ${user._id}</li>
+        </ul>`;
+      });
+      str += '<p><a href="/">⬅ Home</a></p>';
+      res.status(200).send(str);
+    })
+    .catch(err => {
+      return next(err);
+    });
 });
 
 // Page not found
 router.get('*', (req, res, next) => {
   var url = req.protocol + '://' + req.get('host') + req.originalUrl;
-  res.status(404).json({
-    "message" : "Error 404! Page not found. Unable to access " + url
-  });
+  res.status(404).send(`
+    <h1>Error 404!</h1>
+    <p>Page not found. Error trying to access ${url}</p>
+    <p><a href="/">⬅ Home</a></p>
+  `);
 });
 
 module.exports = router;

@@ -9,4 +9,4 @@ The aim of this project is to make an application using the MERN stack which all
 - Create a `.env` file in the root directory
 - Add the `MONGODB_URI` and `PORT` variables to the `.env` file (I will provide these in an email)
 - Run `npm run dev` to start the client and the server
-- Go to `http://localhost:8080`
+- Go to `http://localhost:3000`
