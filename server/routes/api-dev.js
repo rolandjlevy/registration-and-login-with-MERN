@@ -56,7 +56,7 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
   const { username, password } = req.body;
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    const error = new Error('Invalid input. The username and password must be completed and be 6 - 24 characters long');
+    const error = new Error('Invalid input. The username and password must be completed and be 6 - 24 characters long.');
     error.status = unprocessableEntityStatus;
     return next(error);
   }
@@ -77,7 +77,7 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
             res.status(200).json({
               error: false,
               data: user,
-              message: `Thank you ${username}, you have logged in successfully.`
+              message: `Thank you ${username}, you have logged in successfully. Your customer details are shown below.`
             });
           }
         });

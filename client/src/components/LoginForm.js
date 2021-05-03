@@ -16,6 +16,8 @@ function LoginForm(props) {
   const [formState, setFormState] = useState({});
   const [alertType, setAlertType] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [userDetails, setuserDetails] = useState({});
 
   const togglePasswordVisibilty = () => {
     setPasswordsVisibility(!passwordsHidden);
@@ -23,6 +25,7 @@ function LoginForm(props) {
 
   const handleChange = (event) => {
     if (errorMessage.length) setErrorMessage('');
+    if (loggedIn) setLoggedIn(false);
     const key = event.target.id;
     setFormState({
       ...formState,
@@ -32,6 +35,7 @@ function LoginForm(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoggedIn(false);
     fetch('/user/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -43,6 +47,8 @@ function LoginForm(props) {
       const emoji = result.error ? '⚠️ ' : '👍 ';
       setAlertType(alertColor);
       setErrorMessage(emoji + result.message);
+      setLoggedIn(!result.error);
+      setuserDetails(result.data);
     });
   }
 
@@ -70,10 +76,18 @@ function LoginForm(props) {
           <Alert color={alertType}>
             {errorMessage}
           </Alert>}
+          {loggedIn && userDetails && (
+            <ul>
+              <li><strong>User name</strong>: {userDetails.username}</li>
+              <li><strong>Email address</strong>: {userDetails.email}</li>
+              <li><strong>Registration date</strong>: {userDetails.date && new Date(Number(userDetails.date)).toISOString()}</li>
+              <li><strong>Customer ID</strong>: {userDetails._id}</li>
+            </ul>)}
         </Container>
       </Jumbotron>
     </div>
   );
 }
+
 
 export default LoginForm;
