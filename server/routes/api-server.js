@@ -127,9 +127,7 @@ router.get('/users', (req, res, next) => {
     User.find({  })
     .then(users => {
       let str = '<h1>View all users</h1>';
-      // .toISOString()
       users.forEach(user => {
-        // const date = new Date(user.date) ? new Date(Number(user.date) : new Date(user.date));
         const numberDate = new Date(Number(user.date)).getTime() || false;
         const date = numberDate ? new Date(Number(user.date)) : new Date(user.date);
         str += `
