@@ -3,7 +3,7 @@
 ## Table of contents
 
 - [Purpose](#purpose-)
-- [Running the code](#running-the-code-)
+- [Setup](#setup-)
 - [Technologies](#technologies-)
 - [Screenshots](#screenshots-)
 - [Improvements](#improvements-)
@@ -14,9 +14,9 @@
 
 ## Purpose 🎯
 
-The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details
+The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details.
 
-## Running the code 🛠️
+## Setup 🛠️
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
 - Go into the directory named `registration-and-login-with-MERN`
