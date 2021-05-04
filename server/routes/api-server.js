@@ -107,11 +107,12 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
 router.get('/user/:id', (req, res, next) => {
   User.findOne({ _id: req.params.id })
     .then(user => {
+      const date = new Date(Number(user.date)).toISOString() || user.date;
       res.status(200).send(`
         <h1>View user details</h1>
         <p>Username: ${user.username}</p>
         <p>Email: ${user.email}</p>
-        <p>Date registered: ${new Date(Number(user.date)).toISOString()}</p>
+        <p>Date registered: ${date}</p>
         <p>ID: ${user._id}</p>
         <p><a href="/">⬅ Home</a> | <a href="/users">All users</a></p>
     `);
@@ -126,13 +127,17 @@ router.get('/users', (req, res, next) => {
     User.find({  })
     .then(users => {
       let str = '<h1>View all users</h1>';
+      // .toISOString()
       users.forEach(user => {
+        // const date = new Date(user.date) ? new Date(Number(user.date) : new Date(user.date));
+        const numberDate = new Date(Number(user.date)).getTime() || false;
+        const date = numberDate ? new Date(Number(user.date)) : new Date(user.date);
         str += `
         <ul>
           <li><a href="/user/${user._id}">View user</a></li>
           <li>Username: ${user.username}</li>
           <li>Email: ${user.email}</li>
-          <li>Date registered: ${new Date(Number(user.date)).toISOString()}</li>
+          <li>Date registered: ${date.toISOString()}</li>
           <li>ID: ${user._id}</li>
         </ul>`;
       });
@@ -140,6 +145,7 @@ router.get('/users', (req, res, next) => {
       res.status(200).send(str);
     })
     .catch(err => {
+      console.log(err)
       return next(err);
     });
 });
