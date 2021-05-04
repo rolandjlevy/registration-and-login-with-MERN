@@ -3,7 +3,7 @@
 ## Table of contents
 
 - [Purpose](#purpose-)
-- [Setup](#setup-)
+- [Setup](#setup--)
 - [Technologies](#technologies-)
 - [Screenshots](#screenshots-)
 - [Improvements](#improvements-)
