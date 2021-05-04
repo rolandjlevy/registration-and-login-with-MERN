@@ -1,9 +1,9 @@
-## Registration & login with MERN stack
+# Registration & login with MERN stack
 
 ## Table of contents
 
 - [Purpose](#purpose-)
-- [Setup](#setup-)
+- [Running the code](#running-the-code-)
 - [Technologies](#technologies-)
 - [Screenshots](#screenshots-)
 - [Improvements](#improvements-)
@@ -16,7 +16,7 @@
 
 The aim of this project is to make an application using the MERN stack which allows a user to register, login and view their details
 
-## Setup 🛠️
+## Running the code 🛠️
 
 - Clone this repo: `git clone https://github.com/rolandjlevy/registration-and-login-with-MERN.git`
 - Go into the directory named `registration-and-login-with-MERN`
