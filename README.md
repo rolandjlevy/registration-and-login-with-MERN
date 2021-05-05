@@ -50,18 +50,16 @@ The aim of this project is to make an application using the MERN stack which all
 
 ## Improvements 👌
 
-> If I had more time I would do the following:
-
 - Implement state management with Redux
-- Unit testing
 - JWT tokens for authentication
 - Use the `he` HTML entity encoder / decoder to protect against XSS
 - Use React router for page navigation
 - Host the app on Heroku so it can run in the cloud
+- Unit testing
 
 ## Reference 📙
 
-- The content and some of the design was inpired by the [Cromwell website](https://www.cromwell.co.uk)
+- The content and design was inpired by the [Cromwell website](https://www.cromwell.co.uk)
 
 ## Contact 📧
 

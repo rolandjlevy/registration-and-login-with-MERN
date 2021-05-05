@@ -58,6 +58,11 @@ body {
 div.modal.fade.show > div.modal-dialog.login,
 div.modal.fade.show > div.modal-dialog.registration {
 	box-shadow: 0 0 30px 5px #00000033 !important;
+	box-shadow: 0 0 30px 5px #00000033 !important;
+	-webkit-box-shadow: 0 0 30px 5px #00000033 !important;
+	-moz-box-shadow: 0 0 30px 5px #00000033 !important;
+	-moz-transition: 0 0 30px 5px #00000033 !important;
+	-webkit-transition: 0 0 30px 5px #00000033 !important;
 }
 
 .card {
