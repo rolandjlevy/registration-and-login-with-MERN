@@ -54,7 +54,7 @@ The aim of this project is to make an application using the MERN stack which all
 - JWT tokens for authentication
 - Use the `he` HTML entity encoder / decoder to protect against XSS
 - Use React router for page navigation
-- Host the app on Heroku so it can run in the cloud
+- [Host the app](https://dev.to/stlnick/how-to-deploy-a-full-stack-mern-app-with-heroku-netlify-ncb) on Heroku / Netlify so it can run in the cloud
 - Unit testing
 
 ## Reference 📙
