@@ -17,6 +17,12 @@
 	border-color: var(--primary-orange-mid);
 }
 
+.btn-outline-warning:not(:disabled):not(.disabled):active {
+	color: #fff;
+	background-color: var(--primary-orange-dark);
+	border-color: var(--primary-orange-dark);
+}
+
 /* Change logo colour */
 .container > .navbar-brand {
 	color: var(--primary-orange-mid);
@@ -55,14 +61,8 @@ body {
 	background-color: var(--light-grey);
 }
 
-div.modal.fade.show > div.modal-dialog.login,
-div.modal.fade.show > div.modal-dialog.registration {
-	box-shadow: 0 0 30px 5px #00000033 !important;
-	box-shadow: 0 0 30px 5px #00000033 !important;
-	-webkit-box-shadow: 0 0 30px 5px #00000033 !important;
-	-moz-box-shadow: 0 0 30px 5px #00000033 !important;
-	-moz-transition: 0 0 30px 5px #00000033 !important;
-	-webkit-transition: 0 0 30px 5px #00000033 !important;
+.modal > .modal-dialog > .modal-content {
+	box-shadow: 0 0 30px 5px rgba (0, 0, 0, 0.3) !important;
 }
 
 .card {

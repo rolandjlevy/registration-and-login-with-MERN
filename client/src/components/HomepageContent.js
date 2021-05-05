@@ -11,7 +11,7 @@ function HomepageContent(props) {
         <Container fluid>
           <Row>
             <Col>
-              <h1 className="display-5">Bromwell Tools</h1>
+              <h1 className="display-5">Gromwell Tools</h1>
               <p className="lead">A supplier of industrial tools, offering an unrivalled choice of products to all industries, professions and trades</p>
               <hr className="my-2" />
               <p>Of all the work we do, we are famous for Safety, Cutting Tools, Hand Tools and Power Tools and Abrasives. We have expertise within our technical teams who can provide audits and offer advice on how your business can improve with the help of these four key categories.</p>
