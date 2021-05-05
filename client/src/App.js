@@ -35,13 +35,13 @@ function App() {
         onToggleRegister={handleRegisterModalToggle} 
         toggleState={toggleRegisterState} 
         modalTitle="Register as a new customer" 
-        className=""
+        className="registration"
       />
       <LoginModal 
         onToggleLogin={handleLoginModalToggle} 
         toggleState={toggleLoginState} 
         modalTitle="Login as an existing customer" 
-        className=""
+        className="login"
       />
     </div>
   );

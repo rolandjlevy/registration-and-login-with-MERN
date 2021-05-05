@@ -3,6 +3,9 @@ import {
   Card, CardText, CardBody, CardTitle, CardSubtitle, Button
 } from 'reactstrap';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
+
 const HomepageCard = (props) => {
   const { img, title, subtitle, link, bodyText } = props;
   return (
@@ -15,7 +18,7 @@ const HomepageCard = (props) => {
         <img width="100%" src={img} alt={subtitle} />
         <CardBody>
           <CardText>{bodyText}</CardText>
-          <Button href={link}>Learn more</Button>
+          <Button href={link}>Learn more{" "}<FontAwesomeIcon icon={faCaretRight} size="lg" /></Button>
         </CardBody>
       </Card>
     </div>

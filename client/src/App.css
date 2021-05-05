@@ -55,8 +55,9 @@ body {
 	background-color: var(--light-grey);
 }
 
-.alert {
-	box-shadow: 0 6px 9px -3px #00000055;
+div.modal.fade.show > div.modal-dialog.login,
+div.modal.fade.show > div.modal-dialog.registration {
+	box-shadow: 0 0 30px 5px #00000033 !important;
 }
 
 .card {
