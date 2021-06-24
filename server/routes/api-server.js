@@ -130,12 +130,32 @@ router.get('/users', (req, res, next) => {
       users.forEach(user => {
         const numberDate = new Date(Number(user.date)).getTime() || false;
         const date = numberDate ? new Date(Number(user.date)) : new Date(user.date);
+
+        const options = { 
+          weekday: 'long', 
+          year: 'numeric', 
+          month: 'long', 
+          day: 'numeric' 
+        };
+        
+        const localeStr = date.toLocaleString('en-GB', options);
+        const localeDateStr = date.toLocaleDateString('en-GB', options);
+        const localeTimeStr = date.toLocaleTimeString('en-GB', options);
+
+        console.log({
+          localeStr,
+          localeDateStr,
+          localeTimeStr
+        })
+
+        // const dateString = date ? date.toISOString() : date.toString();
+        
         str += `
         <ul>
           <li><a href="/user/${user._id}">View user</a></li>
           <li>Username: ${user.username}</li>
           <li>Email: ${user.email}</li>
-          <li>Date registered: ${date.toISOString()}</li>
+          <li>Date registered: ${localeDateStr}</li>
           <li>ID: ${user._id}</li>
         </ul>`;
       });
