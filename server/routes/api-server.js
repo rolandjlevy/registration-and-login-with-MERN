@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const dateFormat = require('dateformat');
 const User = require('../models/User.js');
 
 const { check, validationResult } = require('express-validator');
@@ -137,16 +138,21 @@ router.get('/users', (req, res, next) => {
           month: 'long', 
           day: 'numeric' 
         };
+
+        const formattedDate = dateFormat(new Date(), 'GMT:dd/mm/yyyy, h:MM:ss TT');
         
         const localeStr = date.toLocaleString('en-GB', options);
         const localeDateStr = date.toLocaleDateString('en-GB', options);
         const localeTimeStr = date.toLocaleTimeString('en-GB', options);
 
-        console.log({
-          localeStr,
-          localeDateStr,
-          localeTimeStr
-        })
+        console.log(user.username, 
+          {
+            numberDate,
+            date,
+            formattedDate,
+            localeDateStr
+          }
+        );
 
         // const dateString = date ? date.toISOString() : date.toString();
         
@@ -155,7 +161,7 @@ router.get('/users', (req, res, next) => {
           <li><a href="/user/${user._id}">View user</a></li>
           <li>Username: ${user.username}</li>
           <li>Email: ${user.email}</li>
-          <li>Date registered: ${localeDateStr}</li>
+          <li>Date registered: </li>
           <li>ID: ${user._id}</li>
         </ul>`;
       });
