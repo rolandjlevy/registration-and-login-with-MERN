@@ -7,6 +7,12 @@ const { check, validationResult } = require('express-validator');
 const Validation = require('../classes/Validation.js');
 const validate = new Validation();
 
+const formatDate = (date) => {
+  const numberDate = new Date(Number(date));
+  const formatStr = 'GMT:dd/mm/yyyy, h:MM:ss TT';
+  return numberDate.getTime() ? dateFormat(numberDate, formatStr) : date;
+}
+
 const unprocessableEntityStatus = 422;
 
 // API routes 
@@ -108,12 +114,11 @@ router.post('/user/login', validate.rules.login, (req, res, next) => {
 router.get('/user/:id', (req, res, next) => {
   User.findOne({ _id: req.params.id })
     .then(user => {
-      const date = new Date(Number(user.date)).toISOString() || user.date;
       res.status(200).send(`
         <h1>View user details</h1>
         <p>Username: ${user.username}</p>
         <p>Email: ${user.email}</p>
-        <p>Date registered: ${date}</p>
+        <p>Date registered: ${formatDate(user.date)}</p>
         <p>ID: ${user._id}</p>
         <p><a href="/">⬅ Home</a> | <a href="/users">All users</a></p>
     `);
@@ -129,39 +134,12 @@ router.get('/users', (req, res, next) => {
     .then(users => {
       let str = '<h1>View all users</h1>';
       users.forEach(user => {
-        const numberDate = new Date(Number(user.date)).getTime() || false;
-        const date = numberDate ? new Date(Number(user.date)) : new Date(user.date);
-
-        const options = { 
-          weekday: 'long', 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        };
-
-        const formattedDate = dateFormat(new Date(), 'GMT:dd/mm/yyyy, h:MM:ss TT');
-        
-        const localeStr = date.toLocaleString('en-GB', options);
-        const localeDateStr = date.toLocaleDateString('en-GB', options);
-        const localeTimeStr = date.toLocaleTimeString('en-GB', options);
-
-        console.log(user.username, 
-          {
-            numberDate,
-            date,
-            formattedDate,
-            localeDateStr
-          }
-        );
-
-        // const dateString = date ? date.toISOString() : date.toString();
-        
         str += `
         <ul>
           <li><a href="/user/${user._id}">View user</a></li>
           <li>Username: ${user.username}</li>
           <li>Email: ${user.email}</li>
-          <li>Date registered: </li>
+          <li>Date registered: ${formatDate(user.date)}</li>
           <li>ID: ${user._id}</li>
         </ul>`;
       });
