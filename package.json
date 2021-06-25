@@ -4,10 +4,10 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "client-install": "npm install --prefix client",
-    "client": "npm start --prefix client",
+    "client-install": "cd ./client && npm install",
+    "client": "cd ./client && npm start",
     "server": "nodemon server.js",
-    "dev": "ROUTES=dev concurrently \"npm run server\" \"npm run client\""
+    "dev": "cross-env NODE_ENV=dev concurrently \"npm run server\" \"npm run client\""
   },
   "author": "",
   "license": "ISC",
@@ -18,6 +18,7 @@
     "bcrypt": "^5.0.1",
     "concurrently": "^6.0.2",
     "cors": "^2.8.5",
+    "cross-env": "^7.0.3",
     "dateformat": "^4.5.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

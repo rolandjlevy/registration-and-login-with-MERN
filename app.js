@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 
-const { ROUTES } = process.env;
+const { NODE_ENV } = process.env;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname + '/server/public'));
 
 let routes = require('./server/routes/api-dev.js');
-if (ROUTES === 'server') {
+if (NODE_ENV === 'server') {
     routes = require('./server/routes/api-server.js');
 }
 app.use('/', routes);
@@ -23,7 +23,7 @@ app.use((req, res, next) => {
 app.use((err, req, res, next) => {
     const status = err.status || 500;
     const message = err.message || 'unknown';
-    if (ROUTES === 'server') {
+    if (NODE_ENV === 'server') {
         return res.status(status).send(`
             <h1>Error ⚠️</h1>
             <p>${message}</p>
