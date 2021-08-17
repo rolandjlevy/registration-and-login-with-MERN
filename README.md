@@ -50,16 +50,16 @@ The aim of this project is to make an application using the MERN stack which all
 
 ## Improvements 👌
 
-- Implement state management with Redux
+- State management with Redux
 - JWT tokens for authentication
 - Use the `he` HTML entity encoder / decoder to protect against XSS
 - Use React router for page navigation
 - [Host the app](https://dev.to/stlnick/how-to-deploy-a-full-stack-mern-app-with-heroku-netlify-ncb) on Heroku / Netlify so it can run in the cloud
-- Unit testing
+- Unit / Integration testing with [React Testing Library](https://testing-library.com)
 
 ## Reference 📙
 
-- The content and design was inpired by the [Cromwell website](https://www.cromwell.co.uk)
+- Content and design inpired by the [Cromwell website](https://www.cromwell.co.uk)
 
 ## Contact 📧
 
